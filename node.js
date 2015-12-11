@@ -16,7 +16,11 @@ var coin = fs.readFileSync('./coin.sol', 'utf8')
 var compiled_coin = web3.eth.compile.solidity(coin)
 var coincode = compiled_coin.Coin.code
 var CoinContract = web3.eth.contract(compiled_coin.Coin.info.abiDefinition);
-var mycoin = CoinContract.new({from: web3.eth.accounts[0], data: compiled_coin.Coin.code}, function(e, contract) {
+
+//gas = web3.eth.gasPrice.toString(10)
+//console.log('estimating gas' + gas).toString(10)
+
+var mycoin = CoinContract.new({from: web3.eth.accounts[0], data: compiled_coin.Coin.code, gas: 1000000}, function(e, contract) {
   if (!e) {
     console.log("done: " + contract.transactionHash)
     console.log("mined: " + contract.address)
