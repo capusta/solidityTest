@@ -23,7 +23,7 @@ contract Coin {
         Sent(msg.sender, receiver, amount);
     }
 
-   function greet(string _greeting) returns(string) {
+   function greet(string _greeting) returns(bytes32) {
       // newgreeting = _greeting + " buddy";
       return "hi";
    }
