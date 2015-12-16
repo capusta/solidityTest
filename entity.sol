@@ -1,10 +1,18 @@
-contract Test{
-   event Logit(string msg);
-   mapping(uint => string) someIndex;
+contract Thing{
+    event Logit(string msg);
+    mapping(address => bool) trustMap;
+    mapping(address => uint) accounts;
 
-   function greet(string _greeting) returns(string answer) {
-      // newgreeting = _greeting + " buddy";
-      answer =  _greeting;
+    function isTrusted() returns (bool) {
+        Logit(" ~ checking trust ");
+        return trustMap[mst.sender];
+    }
+    function trustMe() returns (bool result) {
+        Logit(" ~ asking for trust ")
+        trustMap[msg.sender] = true
+   }
+   function give() returns (uint balance) {
+        if isTrusted()
    }
    function () {
      Logit("Unknown Function");
