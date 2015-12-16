@@ -28,7 +28,7 @@ function keepgoing() {
   //console.log(JSON.stringify(myCoin.abi));
   console.log("calling greeting")
   console.log(myCoin.greet.call("hey there"))
-
+  console.log(myCoin.unknown.call())
 }
 var mycoin = coinabi.new({from: web3.eth.accounts[0], data: compiled_coin.Coin.code, gas: 1000000}, function(e, contract) {
   if (!e && contract.address) {
