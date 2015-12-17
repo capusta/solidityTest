@@ -1,20 +1,41 @@
-contract Thing{
-    event Logit(string msg);
-    mapping(address => bool) trustMap;
-    mapping(address => uint) accounts;
+import 'stuff.sol'
 
-    function isTrusted() returns (bool) {
-        Logit(" ~ checking trust ");
-        return trustMap[mst.sender];
+contract Registrar{
+    event log(string msg);
+    event itemadded(string msg);
+    event registrationcomplete(string msg);
+
+    address owner;
+    modifier onlyowner { if (msg.sender == owner) _ }
+
+    struct Stuff {
+        uint numItems;
+        mapping (string => string) item;
     }
-    function trustMe() returns (bool result) {
-        Logit(" ~ asking for trust ")
-        trustMap[msg.sender] = true
-   }
-   function give() returns (uint balance) {
-        if isTrusted()
-   }
-   function () {
-     Logit("Unknown Function");
-   }
+    mapping (address => Stuff) userStuff;
+
+    function register(){
+        Stuff s = userStuff[msg.sender] = s;
+        s.numItems = 0;
+        registrationcomplete(msg.sender);
+    }
+
+    function addItem(string name){
+        Stuff s = userStuff[msg.sender];
+        s.numItems = s.numItems++;
+        s.item[name] = true;
+        itemadded(name);
+    }
+
+    function showItems(){
+    }
+
+    function Registrar(){
+        owner = msg.sender;
+    }
+
+    function kill() onlyowner {
+        suicide(owner);
+    }
+
 }
