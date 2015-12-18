@@ -4,8 +4,9 @@ var Web3 = require('web3');
 var web3 = new Web3();
 
 web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
+console.log("connected: " + web3.isConnected())
 var balance = web3.eth.getBalance(web3.eth.coinbase)
-console.log(balance.toString(10));
+console.log("current balance " + balance.toString(10));
 
 var source   = fs.readFileSync('./registrar.sol', 'utf8')
 var compiled = web3.eth.compile.solidity(source)
@@ -24,7 +25,7 @@ function interact() {
   fs.writeFileSync('./addr', contractAddr);
 
   parsedABI = JSON.parse(fs.readFileSync('./regABI.def')).abi
-  console.log("parsing successfull " parsedABI.length )
+  console.log("parsing successfull " +  parsedABI.length )
   var myReg = web3.eth.contract(parsedABI).at(contractAddr)
 
   console.log("calling register");
@@ -38,7 +39,7 @@ var mycoin = coinabi.new({from: web3.eth.accounts[0], data: reg_code, gas: 10000
     console.log("mined: " + contract.address)
     contractAddr = contract.address
     interact();
-  } else if { !e && contract.transactionHash) {
+  } else if (!e && contract.transactionHash) {
     console.log(" mining ");
   } else {
     console.log("error ccured " + e)

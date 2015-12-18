@@ -1,4 +1,4 @@
-import 'stuff.sol'
+// import './stuff.sol';
 
 contract Registrar{
     event log(string msg);
