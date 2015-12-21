@@ -19,8 +19,16 @@ var reg_abi  = web3.eth.contract([compiled.Registrar.info.abiDefinition]);
 
   //TODO: check file 'addr' later
 
+var cb = function(err, result){
+  if (!err) {
+    console.log("callback success: " + result );
+  } else {
+    console.log("callback failed: " + err);
+  }
+}
+
 var contractAddr = "";
-contractAddr = '0x9a384aff21ba320483ae740e252c2fa19185fa4b'
+//var contractAddr = "0x2a1150a0b20c3c94e8b28169192cccd1c25a8614";
 function interact() {
   console.log(" address " + contractAddr);
 
@@ -28,10 +36,11 @@ function interact() {
   console.log("parsing successfull " +  parsedABI.length + " objects ")
   var myReg = web3.eth.contract(parsedABI).at(contractAddr)
 
-  console.log("calling register");
-  console.log(myReg.register.sendTransaction({from: acc0}))
-  console.log(myReg.addItem.sendTransaction("one",{from: acc0}))
-  console.log(myReg.showItems.sendTransaction({from: acc0}))
+  myReg.register.sendTransaction({from: acc0}, cb)
+  myReg.addItem.sendTransaction("one",{from: acc0})
+  myReg.addItem.call("one",{from: acc0}, cb);
+  myReg.showItems.sendTransaction({from: acc0}, cb);
+  myReg.showItems.call({from: acc0}, cb);
 }
 
 if (contractAddr != "") { interact(); }
