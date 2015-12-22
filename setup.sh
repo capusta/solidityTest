@@ -12,7 +12,7 @@ sudo puppet module install camptocamp-accounts
 sudo puppet module install saz-ssh
 
 which solc
-if [ i $? != 0 ]; then
+if [ $? != 0 ]; then
   echo "UH OH ... solidity compiler not installed"
 fi
 
