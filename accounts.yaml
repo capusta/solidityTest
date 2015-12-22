@@ -1,0 +1,11 @@
+---
+accounts::ssh_keys:
+  solidity:
+    type: ssh-rsa
+    public: AAAAB3NzaC1yc2EAAAADAQABAAABAQC//2/oER8fLymW8YVhhKylVqnMIp0ssGm9AVbcTWc9FkKLxyWBHcEVHQYrE0seCIVEZfVwteqTgPFQUcw3MG/yzB9HUpwU9m91/jaMNkPM6KsgFrS7SZTudoEsI8836HZmMyqdDV/DMGFXzzwdVRLEVacIaLuth+jas+OadjNb+NZYMjrJC8C/QD+ngAEImuL8QlPsVSaFo3/tC2xI/0mjnyAOOqrapuM2KJidL6KQN8pHqQiJ61wGCd+psB7Rw7B1/XlTD71DzZrjzJx+3jW3mYwrtS+NgpJUFPS68ucohBw46oyQfA+Qnl/I3lr3+qm05oT3SsLue1612iA2akwd
+
+accounts::users:
+  solidity:
+    uid: 1520
+    comment: Generic Solidity User
+
