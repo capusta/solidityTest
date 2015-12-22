@@ -10,6 +10,8 @@ class { 'accounts':
   usergroups => hiera_hash('accounts::usergroups', {}),
 }
 
+include ssh
+
 accounts::account { 'solidity':
   authorized_keys => [ 'solidity' ],
 }

@@ -9,3 +9,12 @@ accounts::users:
     uid: 1520
     comment: Generic Solidity User
 
+ssh::storeconfigs_enabled: true
+
+ssh::server_options:
+    Protocol: '2'
+    ChallengeResponseAuthentication: 'no'
+    PasswordAuthentication: 'no'
+    X11Forwarding: 'no'
+    PermitRootLogin: 'no'
+
