@@ -17,4 +17,5 @@ ssh::server_options:
     PasswordAuthentication: 'no'
     X11Forwarding: 'no'
     PermitRootLogin: 'no'
+    UsePAM: 'no'
 
