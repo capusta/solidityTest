@@ -27,7 +27,7 @@ contract Registrar{
         itemadded(name);
     }
 
-    function showItems() internal returns (Stuff){
+    function showItems() returns (Stuff){
       return userStuff[msg.sender];
       //s = b;
     }

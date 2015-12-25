@@ -28,7 +28,7 @@ var cb = function(err, result){
 }
 
 var contractAddr = "";
-//var contractAddr = "0x2a1150a0b20c3c94e8b28169192cccd1c25a8614";
+//var contractAddr = "0x6abcca653cdad088a6d31148d78d8495a5ce41eb"
 function interact() {
   console.log(" address " + contractAddr);
 
@@ -39,7 +39,7 @@ function interact() {
   myReg.register.sendTransaction({from: acc0}, cb)
   myReg.addItem.sendTransaction("one",{from: acc0})
   myReg.addItem.call("one",{from: acc0}, cb);
-  myReg.showItems.sendTransaction({from: acc0}, cb);
+  //myReg.showItems.sendTransaction({from: acc0}, cb);
   myReg.showItems.call({from: acc0}, cb);
 }
 
