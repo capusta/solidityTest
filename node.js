@@ -40,7 +40,7 @@ function interact() {
   myReg.addItem.sendTransaction("one",{from: acc0})
   myReg.addItem.call("one",{from: acc0}, cb);
   //myReg.showItems.sendTransaction({from: acc0}, cb);
-  myReg.showItems.call({from: acc0}, cb);
+  myReg.showItems.call("one", {from: acc0}, cb);
 }
 
 if (contractAddr != "") { interact(); }

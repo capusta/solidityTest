@@ -10,7 +10,7 @@ contract Registrar{
 
     struct Stuff {
         uint numItems;
-        mapping (string => bool) item;
+        mapping (string => string) item;
     }
     mapping (address => Stuff) userStuff;
 
@@ -23,13 +23,13 @@ contract Registrar{
     function addItem(string name){
         Stuff s = userStuff[msg.sender];
         s.numItems = s.numItems++;
-        s.item[name] = true;
+        s.item[name] = 'hello there';
         itemadded(name);
     }
 
-    function showItems() returns (Stuff){
-      return userStuff[msg.sender];
-      //s = b;
+    function showItems(string somename) returns (string){
+      Stuff u = userStuff[msg.sender];
+      return u.item[somename];
     }
 
     function Registrar(){
