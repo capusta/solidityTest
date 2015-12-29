@@ -28,19 +28,21 @@ var cb = function(err, result){
 }
 
 var contractAddr = "";
-//var contractAddr = "0x6abcca653cdad088a6d31148d78d8495a5ce41eb"
+var contractAddr = "0xa12dd513f13052f3376cfc60c9ae0b586f4fa34a"
 function interact() {
   console.log(" address " + contractAddr);
 
   parsedABI = JSON.parse(fs.readFileSync('./regABI.def'))
   console.log("parsing successfull " +  parsedABI.length + " objects ")
   var myReg = web3.eth.contract(parsedABI).at(contractAddr)
-
-  myReg.register.sendTransaction({from: acc0}, cb)
-  myReg.addItem.sendTransaction("one",{from: acc0})
-  myReg.addItem.call("one",{from: acc0}, cb);
-  //myReg.showItems.sendTransaction({from: acc0}, cb);
-  myReg.showItems.call("one", {from: acc0}, cb);
+  if (!myReg.isRegistered.call({from: acc0})) {
+      myReg.register.sendTransaction({from: acc0}, cb)
+      myReg.addItem.sendTransaction("one", "one, hi there", {from: acc0})
+  }
+   myReg.addItem.sendTransaction("three", "AevenlongertextbcdeAbcdeAbcdeAbcdeAbcdeAbcde31323332", {from: acc0}, cb)
+  myReg.showItems("one", cb);
+  myReg.showItems("two", cb);
+  myReg.showItems("three", cb);
 }
 
 if (contractAddr != "") { interact(); }

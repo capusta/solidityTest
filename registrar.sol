@@ -20,10 +20,14 @@ contract Registrar{
         registrationcomplete(msg.sender);
     }
 
-    function addItem(string name){
+    function isRegistered() returns (bool) {
+        return userStuff[msg.sender].numItems == 0;
+    }
+
+    function addItem(string name, string _value){
         Stuff s = userStuff[msg.sender];
         s.numItems = s.numItems++;
-        s.item[name] = 'hello there';
+        s.item[name] = _value;
         itemadded(name);
     }
 
