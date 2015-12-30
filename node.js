@@ -36,6 +36,8 @@ function interact() {
   parsedABI = JSON.parse(fs.readFileSync('./regABI.def'))
   console.log("parsing successfull " +  parsedABI.length + " objects ")
   var myReg = web3.eth.contract(parsedABI).at(contractAddr)
+  var filter = myReg.itemadded();  
+  filter.watch(function(e,r){ if (!e) console.log(r)}) 
   if (!myReg.isRegistered.call({from: acc0})) {
       myReg.register.sendTransaction({from: acc0}, cb)
       myReg.addItem.sendTransaction("one", "one, hi there", {from: acc0})
