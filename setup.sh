@@ -10,6 +10,7 @@ sudo apt-get install solc openssh-server -y
 
 sudo puppet module install camptocamp-accounts
 sudo puppet module install saz-ssh
+sudo puppet module install saz-vim
 
 which solc
 if [ $? != 0 ]; then
@@ -17,3 +18,5 @@ if [ $? != 0 ]; then
 fi
 
 npm install web3
+
+sudo ln .vimrc.local /etc/vim/vimrc.local

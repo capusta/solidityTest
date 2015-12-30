@@ -19,6 +19,7 @@ fs.writeFileSync('./regABI.def', JSON.stringify(compiled.Registrar.info.abiDefin
 var reg_abi  = web3.eth.contract([compiled.Registrar.info.abiDefinition]);
 
   //TODO: check file 'addr' later
+  ///
 
 var cb = function(err, result){
   if (!err) {

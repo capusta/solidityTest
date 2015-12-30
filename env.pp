@@ -10,6 +10,11 @@ class { 'accounts':
   usergroups => hiera_hash('accounts::usergroups', {}),
 }
 
+class{ 'vim':
+  ##opt_maps => { '<F5>': '<Esc>:w<CR>:!%:p<CR>' },
+  opt_misc => ['showmatch','ignorecase','autowrite','number'],
+}
+
 include ssh
 
 accounts::account { 'solidity':
