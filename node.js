@@ -8,6 +8,7 @@ console.log("connected: " + web3.isConnected());
 var balance = web3.eth.getBalance(web3.eth.coinbase);
 console.log("current balance " + balance.toString(10));
 var acc0 = web3.eth.accounts[0];
+var acc1 = web3.eth.accounts[1];
 console.log("using account " + acc0)
 
 var source   = fs.readFileSync('./registrar.sol', 'utf8')
@@ -39,10 +40,12 @@ function interact() {
       myReg.register.sendTransaction({from: acc0}, cb)
       myReg.addItem.sendTransaction("one", "one, hi there", {from: acc0})
   }
-   myReg.addItem.sendTransaction("three", "AevenlongertextbcdeAbcdeAbcdeAbcdeAbcdeAbcde31323332", {from: acc0}, cb)
+ var mytext = 'a very long string of text indluding \n some breaks that is definitely \n longer '
+ mytext += 'than 32 bytes'
+   myReg.addItem.sendTransaction("three", mytext, {from: acc0}, cb)
   myReg.showItems("one", cb);
   myReg.showItems("two", cb);
-  myReg.showItems("three", cb);
+  myReg.showItems.call("three", cb);
 }
 
 if (contractAddr != "") { interact(); }
